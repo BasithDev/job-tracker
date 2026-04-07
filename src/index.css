@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ===== Tailwind v4 Theme Tokens ===== */
+@theme {
+  --color-surface: var(--_surface);
+  --color-surface-alt: var(--_surface-alt);
+  --color-card: var(--_card);
+  --color-elevated: var(--_elevated);
+  --color-hover: var(--_hover);
+  --color-input: var(--_input);
+
+  --color-border: var(--_border);
+  --color-border-h: var(--_border-h);
+
+  --color-fg: var(--_fg);
+  --color-fg2: var(--_fg2);
+  --color-muted: var(--_muted);
+
+  --color-accent: #6c5ce7;
+  --color-accent-h: #7f6ff0;
+  --color-accent-glow: rgba(108, 92, 231, 0.3);
+
+  --color-danger: #ff4757;
+  --color-danger-h: #ff6b7a;
+  --color-success: #2ed573;
+
+  --font-family-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ===== Dark Theme (default) ===== */
+:root,
+[data-theme="dark"] {
+  --_surface: #0a0e1a;
+  --_surface-alt: #111827;
+  --_card: #151c30;
+  --_elevated: #1e2540;
+  --_hover: #252d4a;
+  --_input: #131a2e;
+
+  --_border: #272e4a;
+  --_border-h: #3a4268;
+
+  --_fg: #f0f2f8;
+  --_fg2: #9ca3c0;
+  --_muted: #6b7299;
+
+  color-scheme: dark;
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --_surface: #f4f6fb;
+  --_surface-alt: #ffffff;
+  --_card: #ffffff;
+  --_elevated: #f0f2f7;
+  --_hover: #e8eaf2;
+  --_input: #f7f8fc;
+
+  --_border: #dfe2ec;
+  --_border-h: #c8cbda;
+
+  --_fg: #1a1d2e;
+  --_fg2: #555a72;
+  --_muted: #8b90a8;
+
+  color-scheme: light;
+}
+
+/* ===== Base ===== */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--_surface);
+  color: var(--_fg);
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--_border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--_border-h); }
+
+/* ===== Animations ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-fade-in { animation: fadeIn 0.15s ease-out; }
+.animate-slide-up { animation: slideUp 0.2s ease-out; }
+.animate-drop-in { animation: dropIn 0.15s ease-out; }
+.animate-spin { animation: spin 0.8s linear infinite; }
+
+/* ===== Glow ===== */
+.btn-glow { box-shadow: 0 0 16px var(--color-accent-glow); }
+.btn-glow:hover { box-shadow: 0 0 24px var(--color-accent-glow), 0 4px 12px rgba(0,0,0,0.15); }
+
+/* ===== Inputs accent ===== */
+input[type="checkbox"], input[type="range"] { accent-color: var(--color-accent); }
+
+/* ===== Status select inline ===== */
+.status-inline-select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s;
+}
+.status-inline-select:focus {
+  box-shadow: 0 0 0 2px var(--color-accent-glow);
+}
