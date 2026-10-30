@@ -3,7 +3,7 @@
 # Define variables
 SERVICE_NAME="job-tracker"
 SERVICE_FILE="$HOME/.config/systemd/user/$SERVICE_NAME.service"
-PROJECT_DIR="/home/basith/Desktop/Job Tracker"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 Description="Job Tracker PWA Service"
 
 # Ensure the systemd user directory exists
